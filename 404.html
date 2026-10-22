@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Josephest 2026</title>
+    <script type="text/javascript">
+      // Single Page App redirect for GitHub Pages
+      // Converts /project or /console path to a query/hash parameter on 404
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      var path = l.pathname.slice(1);
+      
+      // Extract the route target
+      var target = path.split('/').pop();
+      if (target === 'project' || target === 'console') {
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/#/' + target
+        );
+      } else {
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/')
+        );
+      }
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
