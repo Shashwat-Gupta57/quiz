@@ -1,16 +1,7 @@
 import { initializeApp, getApps } from "firebase/app";
 import { 
   getFirestore, 
-  collection, 
-  doc, 
-  setDoc, 
-  getDoc, 
-  getDocs, 
-  updateDoc, 
-  onSnapshot, 
-  query, 
-  orderBy, 
-  writeBatch 
+  initializeFirestore
 } from "firebase/firestore";
 
 // User's Firebase Project Configuration
@@ -63,7 +54,16 @@ export function initFirebase() {
       } else {
         app = getApps()[0];
       }
-      db = getFirestore(app);
+
+      // Initialize Firestore with auto-detect long polling for maximum network compatibility
+      try {
+        db = initializeFirestore(app, {
+          experimentalAutoDetectLongPolling: true
+        });
+      } catch {
+        db = getFirestore(app);
+      }
+
       isFirebaseActive = true;
       console.log("Firebase Firestore connected successfully for project:", config.projectId);
       return { app, db, isFirebaseActive: true };

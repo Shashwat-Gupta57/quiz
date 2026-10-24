@@ -101,38 +101,50 @@ if (!localStorage.getItem(KEYS.GAME_STATE)) {
 export function subscribeAdminPasswordHash(callback) {
   if (isFirebaseActive && db) {
     const unsub = onSnapshot(doc(db, "kbc_system", "settings"), async (docSnap) => {
-      const data = docSnap.exists() ? docSnap.data() : {};
+      try {
+        const data = docSnap.exists() ? docSnap.data() : {};
 
-      if (data.adminPwVersion === CURRENT_PW_VERSION && data.adminPasswordHash) {
-        // Hash is current
-        callback(data.adminPasswordHash);
-      } else {
-        // Version mismatch or missing — migrate
-        const hash = await hashPassword(DEFAULT_ADMIN_PASS);
-        await setDoc(doc(db, "kbc_system", "settings"), {
-          adminPasswordHash: hash,
-          adminPwVersion: CURRENT_PW_VERSION
-        }, { merge: true });
-        callback(hash);
+        if (data.adminPwVersion === CURRENT_PW_VERSION && data.adminPasswordHash) {
+          // Hash is current
+          callback(data.adminPasswordHash);
+        } else {
+          // Version mismatch or missing — migrate
+          const hash = await hashPassword(DEFAULT_ADMIN_PASS);
+          try {
+            await setDoc(doc(db, "kbc_system", "settings"), {
+              adminPasswordHash: hash,
+              adminPwVersion: CURRENT_PW_VERSION
+            }, { merge: true });
+          } catch (e) {
+            console.warn("Failed to set admin settings in firestore:", e);
+          }
+          callback(hash);
+        }
+      } catch (err) {
+        console.warn("Error in admin settings snapshot handler:", err);
       }
     }, async (err) => {
       console.warn("Firestore admin settings snapshot error:", err);
       // Fallback to local
       const existingVersion = getLocal(KEYS.ADMIN_PW_VERSION, 0);
       if (existingVersion < CURRENT_PW_VERSION) {
-        const hash = await hashPassword(DEFAULT_ADMIN_PASS);
-        setLocal(KEYS.ADMIN_PASSWORD_HASH, hash);
-        setLocal(KEYS.ADMIN_PW_VERSION, CURRENT_PW_VERSION);
-        callback(hash);
+        try {
+          const hash = await hashPassword(DEFAULT_ADMIN_PASS);
+          setLocal(KEYS.ADMIN_PASSWORD_HASH, hash);
+          setLocal(KEYS.ADMIN_PW_VERSION, CURRENT_PW_VERSION);
+          callback(hash);
+        } catch {
+          callback(getLocal(KEYS.ADMIN_PASSWORD_HASH, null));
+        }
       } else {
         callback(getLocal(KEYS.ADMIN_PASSWORD_HASH, null));
       }
     });
     return () => {
       try {
-        unsub();
-      } catch (e) {
-        if (e.name !== 'AbortError') throw e;
+        if (typeof unsub === 'function') unsub();
+      } catch {
+        // Safe ignore
       }
     };
   } else {
@@ -170,7 +182,7 @@ export function subscribeGameState(callback) {
       if (docSnap.exists()) {
         callback(docSnap.data());
       } else {
-        setDoc(doc(db, "kbc_system", "gameState"), INITIAL_GAME_STATE);
+        setDoc(doc(db, "kbc_system", "gameState"), INITIAL_GAME_STATE).catch(() => {});
         callback(INITIAL_GAME_STATE);
       }
     }, (err) => {
@@ -179,9 +191,9 @@ export function subscribeGameState(callback) {
     });
     return () => {
       try {
-        unsub();
-      } catch (e) {
-        if (e.name !== 'AbortError') throw e;
+        if (typeof unsub === 'function') unsub();
+      } catch {
+        // Safe ignore
       }
     };
   } else {
@@ -237,7 +249,7 @@ export function subscribeQuestions(callback) {
       if (docSnap.exists() && docSnap.data().items) {
         callback(docSnap.data().items);
       } else {
-        setDoc(doc(db, "kbc_system", "questions"), { items: DEFAULT_QUESTIONS });
+        setDoc(doc(db, "kbc_system", "questions"), { items: DEFAULT_QUESTIONS }).catch(() => {});
         callback(DEFAULT_QUESTIONS);
       }
     }, (err) => {
@@ -246,9 +258,9 @@ export function subscribeQuestions(callback) {
     });
     return () => {
       try {
-        unsub();
-      } catch (e) {
-        if (e.name !== 'AbortError') throw e;
+        if (typeof unsub === 'function') unsub();
+      } catch {
+        // Safe ignore
       }
     };
   } else {
@@ -297,9 +309,9 @@ export function subscribeParticipants(callback) {
     });
     return () => {
       try {
-        unsub();
-      } catch (e) {
-        if (e.name !== 'AbortError') throw e;
+        if (typeof unsub === 'function') unsub();
+      } catch {
+        // Safe ignore
       }
     };
   } else {
@@ -480,9 +492,9 @@ export function subscribeQuestionResponses(questionId, callback) {
     });
     return () => {
       try {
-        unsub();
-      } catch (e) {
-        if (e.name !== 'AbortError') throw e;
+        if (typeof unsub === 'function') unsub();
+      } catch {
+        // Safe ignore
       }
     };
   } else {

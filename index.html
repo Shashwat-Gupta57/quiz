@@ -9,6 +9,15 @@
   <meta name="description"
     content="Josephest 2026 — Samnavya • Expressions Quiz Tournament at St. Joseph's College, Allahabad" />
   <title>Josephest 2026 • Samnavya — Expressions Quiz | St. Joseph's College, Allahabad</title>
+  <script>
+    // Suppress benign internal stream cancellation / AbortErrors from Firebase WebChannel stream lifecycle
+    window.addEventListener('unhandledrejection', function(event) {
+      var r = event.reason;
+      if (r && (r.name === 'AbortError' || r.code === 20 || (typeof r.message === 'string' && (r.message.indexOf('aborted') !== -1 || r.message.indexOf('signal is aborted') !== -1)))) {
+        event.preventDefault();
+      }
+    });
+  </script>
 </head>
 
 <body class="bg-[#FDF2E5] text-[#31124A] min-h-screen">
