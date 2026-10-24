@@ -50,7 +50,7 @@ export default function LoginModal({ isOpen, onClose, onLoginSuccess, participan
             </div>
           </div>
           <h2 className="text-xl font-bold text-gold-gradient font-serif">Josephest 2026</h2>
-          <p className="text-[10px] text-[#4C1B56] font-semibold tracking-wider uppercase mt-0.5">Samavaya • St. Joseph's College, Allahabad</p>
+          <p className="text-[10px] text-[#4C1B56] font-semibold tracking-wider uppercase mt-0.5">Samnavya • St. Joseph's College, Allahabad</p>
           <p className="text-[11px] text-[#8B4A5A] mt-1">
             {role === 'admin' ? "Host Console Authentication" : "Expressions Quiz — Team Login"}
           </p>

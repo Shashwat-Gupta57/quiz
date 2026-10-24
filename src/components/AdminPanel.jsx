@@ -71,7 +71,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
           <div>
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded-md bg-[#4C1B56] text-white text-[10px] font-semibold tracking-wide">Host Console</span>
-              <span className="text-xs text-[#8B4A5A]">Samavaya • St. Joseph's College</span>
+              <span className="text-xs text-[#8B4A5A]">Samnavya • St. Joseph's College</span>
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-gold-gradient font-serif mt-0.5">Expressions 2026 Coordinator</h2>
           </div>
@@ -87,7 +87,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
       {/* TAB 1: CONTROLLER */}
       {activeTab === 'controller' && (
         <div className="space-y-6">
-          <div className="samavaya-card rounded-3xl p-5 md:p-6 shadow-xl">
+          <div className="samnavya-card rounded-3xl p-5 md:p-6 shadow-xl">
             <div className="flex flex-wrap items-center justify-between gap-4 mb-5 pb-3 border-b border-[#EEC37D]/12">
               <div className="flex items-center gap-3">
                 <div className="px-3 py-1 rounded-xl bg-[#D27D4F]/10 border border-[#D27D4F]/20 text-[#D27D4F] font-bold text-xs">Q{gameState.currentQuestionIndex + 1} / {questions.length}</div>
@@ -128,7 +128,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
 
           {/* Stats */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div className="samavaya-card rounded-2xl p-5 shadow-lg">
+            <div className="samnavya-card rounded-2xl p-5 shadow-lg">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-xs font-bold text-[#31124A] flex items-center gap-2"><BarChart3 className="w-3.5 h-3.5 text-[#D27D4F]" />Vote Distribution</h3>
                 <span className="text-[11px] text-[#8B4A5A] font-mono">{submissionStats.answeredCount} / {submissionStats.totalParticipants}</span>
@@ -148,7 +148,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
                 })}
               </div>
             </div>
-            <div className="lg:col-span-2 samavaya-card rounded-2xl p-5 shadow-lg flex flex-col">
+            <div className="lg:col-span-2 samnavya-card rounded-2xl p-5 shadow-lg flex flex-col">
               <div className="flex items-center justify-between mb-3"><h3 className="text-xs font-bold text-[#31124A] flex items-center gap-2"><Clock className="w-3.5 h-3.5 text-[#D27D4F]" />Live Response Stream</h3><span className="text-[11px] text-[#D27D4F] font-mono">By speed</span></div>
               {submissionStats.submissions.length === 0 ? (
                 <div className="flex-1 flex flex-col items-center justify-center p-8 text-[#C4A0AB] text-xs text-center border border-dashed border-[#EEC37D]/20 rounded-xl"><Clock className="w-6 h-6 mb-2 opacity-30" /><p>No answers yet.</p></div>
@@ -179,7 +179,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
       {/* TAB 2: QUESTIONS */}
       {activeTab === 'questions' && (
         <div className="space-y-6">
-          <div className="flex flex-wrap items-center justify-between gap-3 samavaya-card p-4 rounded-2xl">
+          <div className="flex flex-wrap items-center justify-between gap-3 samnavya-card p-4 rounded-2xl">
             <div><h3 className="text-sm font-bold text-[#31124A]">Question Bank ({questions.length} Levels)</h3><p className="text-xs text-[#8B4A5A]">Customize questions, options, and flip alternatives</p></div>
             <div className="flex items-center gap-2">
               <button onClick={handleExportJSON} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FBEEE1] hover:bg-[#F9E8E0] text-[#8B4A5A] text-xs font-medium border border-[#EEC37D]/12 cursor-pointer"><Download className="w-3.5 h-3.5 text-[#D27D4F]" /><span>Export</span></button>
@@ -187,7 +187,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
               <button onClick={handleOpenAddQuestion} className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl btn-gold-primary text-xs font-bold shadow-sm cursor-pointer"><Plus className="w-3.5 h-3.5" /><span>Add Question</span></button>
             </div>
           </div>
-          <div className="samavaya-card rounded-2xl overflow-hidden shadow-lg">
+          <div className="samnavya-card rounded-2xl overflow-hidden shadow-lg">
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left">
                 <thead className="bg-[#FBEEE1] text-[#8B4A5A] border-b border-[#EEC37D]/12"><tr><th className="py-2.5 px-4">Level</th><th className="py-2.5 px-4">Prize</th><th className="py-2.5 px-4">Question</th><th className="py-2.5 px-4">Correct</th><th className="py-2.5 px-4">Timer</th><th className="py-2.5 px-4 text-right">Actions</th></tr></thead>
@@ -216,7 +216,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
       {activeTab === 'users' && (
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="samavaya-card rounded-2xl p-5 shadow-lg">
+            <div className="samnavya-card rounded-2xl p-5 shadow-lg">
               <h3 className="text-xs font-bold text-[#31124A] mb-2 flex items-center gap-2"><UserPlus className="w-4 h-4 text-[#D27D4F]" />Provision Team Account</h3>
               <p className="text-[11px] text-[#8B4A5A] mb-3">Contestants log in only with admin-provisioned accounts.</p>
               <form onSubmit={handleAddSingleUser} className="space-y-2.5 text-xs">
@@ -226,7 +226,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
                 <button type="submit" className="w-full py-2.5 btn-gold-primary text-xs font-bold shadow-sm cursor-pointer mt-2">Create Team Account</button>
               </form>
             </div>
-            <div className="samavaya-card rounded-2xl p-5 shadow-lg flex flex-col justify-between">
+            <div className="samnavya-card rounded-2xl p-5 shadow-lg flex flex-col justify-between">
               <div>
                 <h3 className="text-xs font-bold text-[#31124A] mb-1 flex items-center gap-2"><Users className="w-4 h-4 text-[#D27D4F]" />Bulk Generator</h3>
                 <p className="text-[11px] text-[#8B4A5A] mb-3">Generate <code className="text-[#D27D4F]">team1</code> to <code className="text-[#D27D4F]">team{bulkCount}</code> accounts.</p>
@@ -242,7 +242,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
               </div>
             </div>
           </div>
-          <div className="samavaya-card rounded-2xl overflow-hidden shadow-lg">
+          <div className="samnavya-card rounded-2xl overflow-hidden shadow-lg">
             <div className="p-4 border-b border-[#EEC37D]/12 flex items-center justify-between"><h3 className="text-xs font-bold text-[#31124A]">Authorized Teams ({participants.length})</h3><span className="text-[11px] text-[#8B4A5A]">Synced to Firebase</span></div>
             <div className="overflow-x-auto">
               <table className="w-full text-xs text-left">
@@ -273,7 +273,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
       {/* TAB 4: SETTINGS */}
       {activeTab === 'settings' && (
         <div className="space-y-6 max-w-2xl">
-          <div className="samavaya-card rounded-2xl p-5 shadow-lg">
+          <div className="samnavya-card rounded-2xl p-5 shadow-lg">
             <div className="flex items-center gap-2.5 mb-3"><ShieldCheck className="w-4 h-4 text-[#66BB6A]" /><h3 className="text-xs font-bold text-[#31124A]">Admin Security</h3></div>
             <div className="p-3 bg-[#66BB6A]/8 border border-[#66BB6A]/18 rounded-xl text-xs space-y-1.5 mb-3">
               <p className="text-[#31124A] font-medium">✓ Admin password is secured with SHA-256 hashing</p>
@@ -281,7 +281,7 @@ export default function AdminPanel({ gameState, questions, participants, allResp
             </div>
             <p className="text-[11px] text-[#8B4A5A]">To change the admin password, update the source code and redeploy.</p>
           </div>
-          <div className="samavaya-card rounded-2xl p-5 shadow-lg">
+          <div className="samnavya-card rounded-2xl p-5 shadow-lg">
             <div className="flex items-center gap-2.5 mb-3"><Database className="w-4 h-4 text-[#D27D4F]" /><h3 className="text-xs font-bold text-[#31124A]">Firebase Connection</h3></div>
             <div className="p-3 bg-[#FBEEE1] border border-[#EEC37D]/15 rounded-xl text-xs space-y-1 mb-4">
               <p className="text-[#31124A]">Status: {isFirebaseActive ? <span className="text-[#66BB6A] font-bold">● Connected to {fbConfig.projectId}</span> : <span className="text-[#D27D4F] font-bold">● Local Fallback Mode</span>}</p>

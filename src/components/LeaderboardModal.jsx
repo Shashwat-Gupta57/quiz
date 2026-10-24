@@ -25,7 +25,7 @@ export default function LeaderboardModal({ isOpen, onClose, participants = [] })
             <img src={sjcLogo} alt="SJC" className="w-full h-full object-contain filter drop-shadow" />
           </div>
           <span className="text-[10px] uppercase tracking-wider text-[#4C1B56] font-semibold block mb-0.5">
-            Samavaya • St. Joseph's College, Allahabad
+            Samnavya • St. Joseph's College, Allahabad
           </span>
           <h2 className="text-xl font-bold text-gold-gradient font-serif">Expressions 2026 Standings</h2>
           <p className="text-xs text-[#8B4A5A] mt-0.5">Live Team Scores & Rankings</p>
@@ -46,13 +46,11 @@ export default function LeaderboardModal({ isOpen, onClose, participants = [] })
               const isFirst = rank === 1;
               return (
                 <div key={user.username}
-                  className={`flex items-center justify-between p-3 rounded-2xl border transition-all ${
-                    isFirst ? 'bg-[#EEC37D]/10 border-[#EEC37D]/30' : 'bg-[#FBEEE1]/60 border-[#EEC37D]/10 hover:bg-[#EEC37D]/8'
-                  }`}>
+                  className={`flex items-center justify-between p-3 rounded-2xl border transition-all ${isFirst ? 'bg-[#EEC37D]/10 border-[#EEC37D]/30' : 'bg-[#FBEEE1]/60 border-[#EEC37D]/10 hover:bg-[#EEC37D]/8'
+                    }`}>
                   <div className="flex items-center gap-3">
-                    <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold ${
-                      isFirst ? 'bg-gradient-to-br from-[#D27D4F] to-[#EEC37D] text-white' : 'bg-[#FBEEE1] text-[#8B4A5A]'
-                    }`}>{rank}</span>
+                    <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold ${isFirst ? 'bg-gradient-to-br from-[#D27D4F] to-[#EEC37D] text-white' : 'bg-[#FBEEE1] text-[#8B4A5A]'
+                      }`}>{rank}</span>
                     <div>
                       <span className="text-xs font-semibold text-[#31124A] block">{user.displayName || user.username}</span>
                       <span className="text-[10px] text-[#8B4A5A] block">@{user.username} {user.college ? `• ${user.college}` : ''}</span>

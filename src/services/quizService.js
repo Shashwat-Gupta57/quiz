@@ -128,7 +128,13 @@ export function subscribeAdminPasswordHash(callback) {
         callback(getLocal(KEYS.ADMIN_PASSWORD_HASH, null));
       }
     });
-    return unsub;
+    return () => {
+      try {
+        unsub();
+      } catch (e) {
+        if (e.name !== 'AbortError') throw e;
+      }
+    };
   } else {
     // Local-only mode
     (async () => {
@@ -171,7 +177,13 @@ export function subscribeGameState(callback) {
       console.warn("Firestore gameState snapshot error, falling back to local:", err);
       fallbackGameStateSync(callback);
     });
-    return unsub;
+    return () => {
+      try {
+        unsub();
+      } catch (e) {
+        if (e.name !== 'AbortError') throw e;
+      }
+    };
   } else {
     return fallbackGameStateSync(callback);
   }
@@ -232,7 +244,13 @@ export function subscribeQuestions(callback) {
       console.warn("Firestore questions snapshot error:", err);
       fallbackQuestionsSync(callback);
     });
-    return unsub;
+    return () => {
+      try {
+        unsub();
+      } catch (e) {
+        if (e.name !== 'AbortError') throw e;
+      }
+    };
   } else {
     return fallbackQuestionsSync(callback);
   }
@@ -277,7 +295,13 @@ export function subscribeParticipants(callback) {
       console.warn("Firestore participants snapshot error:", err);
       fallbackUsersSync(callback);
     });
-    return unsub;
+    return () => {
+      try {
+        unsub();
+      } catch (e) {
+        if (e.name !== 'AbortError') throw e;
+      }
+    };
   } else {
     return fallbackUsersSync(callback);
   }
@@ -454,7 +478,13 @@ export function subscribeQuestionResponses(questionId, callback) {
       console.warn("Firestore responses snapshot error:", err);
       fallbackResponsesSync(questionId, callback);
     });
-    return unsub;
+    return () => {
+      try {
+        unsub();
+      } catch (e) {
+        if (e.name !== 'AbortError') throw e;
+      }
+    };
   } else {
     return fallbackResponsesSync(questionId, callback);
   }

@@ -2,7 +2,7 @@
 
 @layer base {
   :root {
-    /* Core Samavaya Palette */
+    /* Core Samnavya Palette */
     --midnight-indigo: #1E0D33;
     --royal-plum: #31124A;
     --deep-orchid: #4C1B56;
@@ -33,20 +33,20 @@
   }
 }
 
-/* ───── Samavaya Pastel Background ───── */
-.samavaya-bg {
+/* ───── Samnavya Pastel Background ───── */
+.samnavya-bg {
   background: linear-gradient(170deg, #E8DFF2 0%, #F5E8E0 30%, #FBEEE1 60%, #FDF2E5 100%);
 }
 
 /* ───── Glass Cards ───── */
-.samavaya-card {
+.samnavya-card {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(18px);
   border: 1px solid rgba(238, 195, 125, 0.22);
   box-shadow: 0 4px 24px 0 rgba(30, 13, 51, 0.05), 0 1px 0 rgba(255, 255, 255, 0.6) inset;
 }
 
-.samavaya-card-subtle {
+.samnavya-card-subtle {
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(238, 195, 125, 0.14);
@@ -71,7 +71,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* ───── Quiz Option Buttons (Pastel Samavaya) ───── */
+/* ───── Quiz Option Buttons (Pastel Samnavya) ───── */
 .quiz-option-minimal {
   position: relative;
   background: rgba(255, 255, 255, 0.88);
@@ -153,8 +153,13 @@
 }
 
 @keyframes pulse-minimal-lock {
-  0% { box-shadow: 0 0 12px rgba(210, 125, 79, 0.18); }
-  100% { box-shadow: 0 0 24px rgba(210, 125, 79, 0.35); }
+  0% {
+    box-shadow: 0 0 12px rgba(210, 125, 79, 0.18);
+  }
+
+  100% {
+    box-shadow: 0 0 24px rgba(210, 125, 79, 0.35);
+  }
 }
 
 /* ───── Sleek Scrollbar (Warm) ───── */
@@ -162,13 +167,16 @@
   width: 6px;
   height: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #FBEEE1;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #E1C8B8;
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #D27D4F;
 }

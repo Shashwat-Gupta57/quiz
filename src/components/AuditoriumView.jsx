@@ -53,7 +53,7 @@ export default function AuditoriumView({ gameState, questions, allResponses = {}
           </div>
         </div>
         <span className="text-xs md:text-sm font-semibold tracking-widest uppercase text-[#4C1B56] mb-1">St. Joseph's College, Allahabad</span>
-        <h1 className="text-4xl md:text-6xl font-black text-gold-gradient font-serif uppercase tracking-widest mb-1">Samavaya</h1>
+        <h1 className="text-4xl md:text-6xl font-black text-gold-gradient font-serif uppercase tracking-widest mb-1">Samnavya</h1>
         <p className="text-lg md:text-2xl font-semibold text-[#D27D4F] mb-1">Expressions 2026</p>
         <p className="text-base md:text-xl text-[#8B4A5A] font-medium mb-8">Josephest Quiz Championship</p>
         <div className="inline-flex items-center gap-3 px-6 py-2.5 bg-[#66BB6A]/10 border border-[#66BB6A]/25 rounded-2xl text-[#66BB6A] font-semibold text-sm shadow-md animate-pulse">
@@ -72,10 +72,10 @@ export default function AuditoriumView({ gameState, questions, allResponses = {}
           <div className="w-12 h-12 mx-auto mb-2 rounded-2xl bg-[#EEC37D]/12 border border-[#EEC37D]/20 p-1 flex items-center justify-center">
             <img src={sjcLogo} alt="SJC" className="w-full h-full object-contain" />
           </div>
-          <span className="text-[10px] text-[#4C1B56] tracking-wider uppercase font-semibold">Samavaya • Expressions 2026</span>
+          <span className="text-[10px] text-[#4C1B56] tracking-wider uppercase font-semibold">Samnavya • Expressions 2026</span>
           <h2 className="text-2xl md:text-4xl font-bold text-gold-gradient font-serif mt-1">Tournament Standings</h2>
         </div>
-        <div className="w-full samavaya-card rounded-3xl p-6 shadow-xl space-y-2.5">
+        <div className="w-full samnavya-card rounded-3xl p-6 shadow-xl space-y-2.5">
           {topContestants.length === 0 ? <p className="text-center text-[#C4A0AB] text-xs py-6">No scores registered yet.</p> : (
             topContestants.map((user, idx) => {
               const isFirst = idx === 0;
@@ -99,13 +99,13 @@ export default function AuditoriumView({ gameState, questions, allResponses = {}
   return (
     <div className="flex-1 flex flex-col justify-between p-4 md:p-8 max-w-6xl mx-auto w-full">
       {/* Top Bar */}
-      <div className="flex items-center justify-between gap-4 samavaya-card rounded-3xl p-4 md:p-5 shadow-xl">
+      <div className="flex items-center justify-between gap-4 samnavya-card rounded-3xl p-4 md:p-5 shadow-xl">
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-2xl bg-[#EEC37D]/12 border border-[#EEC37D]/20 p-1 flex items-center justify-center">
             <img src={sjcLogo} alt="SJC" className="w-full h-full object-contain" />
           </div>
           <div>
-            <span className="text-[10px] uppercase tracking-wider text-[#4C1B56] font-semibold block">Samavaya • Expressions • Question {gameState.currentQuestionIndex + 1}</span>
+            <span className="text-[10px] uppercase tracking-wider text-[#4C1B56] font-semibold block">Samnavya • Expressions • Question {gameState.currentQuestionIndex + 1}</span>
             <span className="text-xl md:text-3xl font-bold text-gold-metallic">{ladderItem.prize}</span>
           </div>
         </div>
@@ -155,7 +155,7 @@ export default function AuditoriumView({ gameState, questions, allResponses = {}
 
       {/* Contestant Lock Panel */}
       {contestantLockedList.length > 0 && (
-        <div className="samavaya-card rounded-2xl p-4 mt-2">
+        <div className="samnavya-card rounded-2xl p-4 mt-2">
           <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-[#EEC37D]/12">
             <div className="flex items-center gap-2"><Lock className="w-3.5 h-3.5 text-[#D27D4F]" /><h3 className="text-xs font-bold text-[#31124A]">{isRevealed ? "Contestant Answers Revealed" : "Contestant Lock Status"}</h3></div>
             <span className="text-[11px] text-[#D27D4F] font-mono">{lockedCount} of {participants.length} locked</span>

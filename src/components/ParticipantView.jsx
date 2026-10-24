@@ -98,13 +98,13 @@ export default function ParticipantView({ gameState, questions, currentUser, onO
   if (!currentUser) {
     return (
       <div className="flex-1 flex items-center justify-center p-4">
-        <div className="max-w-md w-full p-8 text-center samavaya-card rounded-3xl">
+        <div className="max-w-md w-full p-8 text-center samnavya-card rounded-3xl">
           <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-tr from-[#A06451] via-[#D27D4F] to-[#EEC37D] p-1 shadow-md">
             <div className="w-full h-full rounded-2xl bg-white p-1 flex items-center justify-center overflow-hidden">
               <img src={sjcLogo} alt="SJC" className="w-full h-full object-contain filter drop-shadow" />
             </div>
           </div>
-          <span className="text-[10px] uppercase tracking-wider text-[#4C1B56] font-semibold block mb-0.5">Samavaya • St. Joseph's College, Allahabad</span>
+          <span className="text-[10px] uppercase tracking-wider text-[#4C1B56] font-semibold block mb-0.5">Samnavya • St. Joseph's College, Allahabad</span>
           <h2 className="text-2xl font-bold text-gold-gradient font-serif">Expressions 2026</h2>
           <p className="text-[#8B4A5A] text-xs mt-2 mb-6 leading-relaxed">Please log in with the team credentials issued by the Josephest organizing committee to enter the live Expressions quiz.</p>
           <button onClick={onOpenLogin} className="w-full py-3.5 btn-gold-primary text-sm font-bold shadow-md cursor-pointer">Sign In with Team Account</button>
@@ -117,11 +117,11 @@ export default function ParticipantView({ gameState, questions, currentUser, onO
   if (gameState.status === 'LOBBY') {
     return (
       <div className="flex-1 flex flex-col items-center justify-center p-4 max-w-3xl mx-auto w-full">
-        <div className="w-full samavaya-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden">
+        <div className="w-full samnavya-card rounded-3xl p-6 md:p-10 text-center relative overflow-hidden">
           <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-[#EEC37D] to-transparent opacity-50" />
           <div className="flex items-center justify-center gap-2.5 mb-4">
             <img src={sjcLogo} alt="SJC" className="w-8 h-8 object-contain filter drop-shadow" />
-            <span className="text-xs font-semibold text-[#4C1B56] tracking-wide">Samavaya • Expressions 2026</span>
+            <span className="text-xs font-semibold text-[#4C1B56] tracking-wide">Samnavya • Expressions 2026</span>
           </div>
           <div className="inline-flex items-center gap-3 px-4 py-2 bg-[#FBEEE1] border border-[#EEC37D]/20 rounded-2xl mb-6">
             <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#D27D4F] to-[#EEC37D] flex items-center justify-center text-white text-xs font-bold">{currentUser.username.substring(0, 2).toUpperCase()}</div>
@@ -156,7 +156,7 @@ export default function ParticipantView({ gameState, questions, currentUser, onO
   return (
     <div className="flex-1 flex flex-col p-3 md:p-6 max-w-4xl mx-auto w-full">
       {/* Top Banner */}
-      <div className="w-full flex flex-wrap items-center justify-between gap-3 samavaya-card rounded-2xl p-4 mb-4">
+      <div className="w-full flex flex-wrap items-center justify-between gap-3 samnavya-card rounded-2xl p-4 mb-4">
         <div className="flex items-center gap-3">
           <div className="px-3 py-1.5 rounded-xl bg-[#D27D4F]/10 border border-[#D27D4F]/20 text-[#D27D4F] font-bold text-xs md:text-sm">Q{gameState.currentQuestionIndex + 1} of {questions.length}</div>
           <div>

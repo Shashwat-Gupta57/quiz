@@ -10,7 +10,7 @@ export default function Header({ currentRole, currentUser, onLogout, onOpenLogin
 
   const toggleSound = () => { const e = sounds.toggleSound(); setIsMuted(!e); };
   const toggleFullscreen = () => {
-    if (!document.fullscreenElement) { document.documentElement.requestFullscreen().catch(() => {}); setIsFullscreen(true); }
+    if (!document.fullscreenElement) { document.documentElement.requestFullscreen().catch(() => { }); setIsFullscreen(true); }
     else { document.exitFullscreen?.(); setIsFullscreen(false); }
   };
 
@@ -28,7 +28,7 @@ export default function Header({ currentRole, currentUser, onLogout, onOpenLogin
             <div className="flex items-center gap-2">
               <h1 className="text-sm md:text-base font-bold tracking-tight text-gold-gradient font-serif">Josephest 2026</h1>
               <span className="px-1.5 py-0.5 text-[9px] font-bold bg-[#4C1B56]/8 text-[#4C1B56] border border-[#4C1B56]/15 rounded-md tracking-wider uppercase">
-                Samavaya
+                Samnavya
               </span>
               {currentRole === 'contestant' && (
                 <span className="px-2 py-0.5 text-[10px] font-semibold bg-[#EEC37D]/15 text-[#D27D4F] border border-[#EEC37D]/30 rounded-md">

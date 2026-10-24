@@ -6,13 +6,13 @@ import AuditoriumView from './components/AuditoriumView';
 import LoginModal from './components/LoginModal';
 import LeaderboardModal from './components/LeaderboardModal';
 
-import { 
-  subscribeGameState, 
-  subscribeQuestions, 
-  subscribeParticipants, 
+import {
+  subscribeGameState,
+  subscribeQuestions,
+  subscribeParticipants,
   subscribeQuestionResponses,
   subscribeAdminPasswordHash,
-  INITIAL_GAME_STATE 
+  INITIAL_GAME_STATE
 } from './services/quizService';
 import { DEFAULT_QUESTIONS } from './data/defaultQuestions';
 
@@ -67,15 +67,15 @@ export default function App() {
     return () => u && u();
   }, [gameState.activeQuestionId, gameState.currentQuestionIndex]);
 
-  const handleContestantLoginSuccess = (user) => { setCurrentUser(user); try { localStorage.setItem('quiz_active_user', JSON.stringify(user)); } catch {} };
-  const handleAdminLoginSuccess = (user) => { setAdminUser(user); try { localStorage.setItem('quiz_admin_auth', JSON.stringify(user)); } catch {} };
+  const handleContestantLoginSuccess = (user) => { setCurrentUser(user); try { localStorage.setItem('quiz_active_user', JSON.stringify(user)); } catch { } };
+  const handleAdminLoginSuccess = (user) => { setAdminUser(user); try { localStorage.setItem('quiz_admin_auth', JSON.stringify(user)); } catch { } };
   const handleLogout = () => {
-    if (currentRoute === 'admin') { setAdminUser(null); try { localStorage.removeItem('quiz_admin_auth'); } catch {} }
-    else { setCurrentUser(null); try { localStorage.removeItem('quiz_active_user'); } catch {} }
+    if (currentRoute === 'admin') { setAdminUser(null); try { localStorage.removeItem('quiz_admin_auth'); } catch { } }
+    else { setCurrentUser(null); try { localStorage.removeItem('quiz_active_user'); } catch { } }
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col samavaya-bg text-[#31124A] selection:bg-[#EEC37D]/30 selection:text-[#1E0D33]">
+    <div className="min-h-screen w-full flex flex-col samnavya-bg text-[#31124A] selection:bg-[#EEC37D]/30 selection:text-[#1E0D33]">
       <Header currentRole={currentRoute} currentUser={currentRoute === 'admin' ? adminUser : currentUser}
         onLogout={handleLogout} onOpenLogin={() => setIsLoginModalOpen(true)} onOpenLeaderboard={() => setIsLeaderboardOpen(true)} />
 
@@ -93,11 +93,11 @@ export default function App() {
               <AdminPanel gameState={gameState} questions={questions} participants={participants} allResponses={allResponses} />
             ) : (
               <div className="flex-1 flex items-center justify-center p-4">
-                <div className="max-w-md w-full p-8 text-center samavaya-card rounded-3xl">
+                <div className="max-w-md w-full p-8 text-center samnavya-card rounded-3xl">
                   <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-[#4C1B56]/8 border border-[#4C1B56]/15 flex items-center justify-center text-[#D27D4F]">🔒</div>
                   <h3 className="text-lg font-bold text-[#31124A] mb-1 font-serif">Host Console Locked</h3>
                   <p className="text-xs text-[#8B4A5A] mb-5 leading-relaxed">
-                    This control panel is restricted to the Josephest 2026 Samavaya Expressions quiz master. Authenticate with your master key.
+                    This control panel is restricted to the Josephest 2026 Samnavya Expressions quiz master. Authenticate with your master key.
                   </p>
                   <button onClick={() => setIsLoginModalOpen(true)} className="w-full py-3 btn-gold-primary text-xs font-bold shadow-md cursor-pointer">
                     Enter Admin Password
